@@ -10,15 +10,15 @@ const app = express();
 const PORT = 3000;
 
 // Set up CORS options to allow passing through cookies to the client server
-const corsOptions = {
-  origin: 'https://kafkalerts.vercel.app',
-  credentials: true,
-  preflightContinue: true,
-  methods: 'GET, POST, PUT, DELETE, OPTIONS',
-  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
-};
+// const corsOptions = {
+//   origin: 'https://kafkalerts.vercel.app',
+//   credentials: true,
+//   preflightContinue: true,
+//   methods: 'GET, POST, PUT, DELETE, OPTIONS',
+//   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -32,6 +32,31 @@ app.use(express.json());
 // });
 
 app.use(express.static(path.join(__dirname, '../index.html')));
+
+const allowCors = fn => async (req, res) => {
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  )
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+  return await fn(req, res)
+}
+
+const handler = (req, res) => {
+  const d = new Date()
+  res.end(d.toString())
+}
+
+
+
 
 //GET METRICS ROUTE
 //TO DO: actually build this
@@ -104,4 +129,5 @@ const listener = app.listen(PORT, () => {
 });
 
 // module.exports = listener;
-module.exports = app;
+module.exports = { app, allowCors: allowCors(handler) };
+// module.exports = ;
