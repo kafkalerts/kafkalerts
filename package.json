@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode=development --open --hot",
     "build": "webpack --mode=production",
-    "dev": "concurrently \"nodemon src/server/server.js  --mode=development\" \" webpack-dev-server --mode=development --open --hot\"",
+    "dev": "concurrently \"nodemon src/api/index.js  --mode=development\" \" webpack-dev-server --mode=development --open --hot\"",
     "test": "jest --detectOpenHandles"
   },
   "repository": {
