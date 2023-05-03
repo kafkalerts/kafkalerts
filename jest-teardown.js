@@ -25,3 +25,8 @@ module.exports = (globalConfig) => {
 //     }
 //   ],
 
+// {
+  
+//   "rewrites": [{ "source": "/api/*", "destination": "/api" }]
+
+// }
