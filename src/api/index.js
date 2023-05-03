@@ -109,10 +109,10 @@ app.use((err, req, res, next) => {
 /**
  * start server
  */
-// const listener = app.listen(PORT, () => {
-//   console.log(`Server listening on port: ${PORT}`);
-// });
+const listener = app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
+});
 
-// module.exports = listener;
+module.exports = listener;
 module.exports = app;
 
