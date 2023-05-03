@@ -7,7 +7,7 @@ const authController = require('./controllers/authController');
 const cookieController = require('./controllers/cookieController');
 const apiController = require('./controllers/apiController');
 const app = express();
-const PORT = 3000;
+// const PORT = 3000;
 
 // Set up CORS options to allow passing through cookies to the client server
 // const corsOptions = {
@@ -109,10 +109,10 @@ app.use((err, req, res, next) => {
 /**
  * start server
  */
-const listener = app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}`);
-});
+// const listener = app.listen(PORT, () => {
+//   console.log(`Server listening on port: ${PORT}`);
+// });
 
-module.exports = listener;
+// module.exports = listener;
 module.exports = app;
 
