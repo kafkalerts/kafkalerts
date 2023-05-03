@@ -27,12 +27,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //always send index.html at all routes so react router handles them instead of backend
-// app.get('/*', (req, res) => {
-//   console.log('here in the server');
-//   return res.sendFile(path.join(__dirname, '../index.html'), (err) => {
-//     if (err) return res.status(500).send(err);
-//   });
-// });
+app.get('/*', (req, res) => {
+  console.log('here in the server');
+  return res.sendFile(path.join(__dirname, '../index.html'), (err) => {
+    if (err) return res.status(500).send(err);
+  });
+});
 
 app.use(express.static(path.join(__dirname, '../index.html')));
 
