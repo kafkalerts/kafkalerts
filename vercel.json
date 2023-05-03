@@ -6,18 +6,8 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    {
-      "src": "/latenight",
-      "dest": "src/server/server.js",
-      "methods": [
-        "GET",
-        "POST",
-        "PUT",
-        "PATCH",
-        "OPTIONS",
-        "DELETE"
-      ]
-    }
-  ]
+
+
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+
 }
