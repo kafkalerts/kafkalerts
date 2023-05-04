@@ -27,6 +27,7 @@ const Homepage = () => {
       else setErrorDisplay('block');
     } catch (err) {
       console.log(err);
+      
     }
   };
   return (
@@ -38,8 +39,8 @@ const Homepage = () => {
         handleSend={handleSend}
       />
       {/* TO DO: delete this */}
-      <button style={{marginTop: '20px'}}onClick={() => navigate('/dashboard')}>
-        Temp button to go to dashboard easily
+      <button id='demo-button' style={{marginTop: '20px'}}onClick={() => navigate('/dashboard')}>
+        See a Demo!
       </button>
       <Footer />
     </div>
